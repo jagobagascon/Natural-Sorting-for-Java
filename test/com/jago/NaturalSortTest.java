@@ -37,6 +37,14 @@ public class NaturalSortTest {
 	}
 
 	@Test
+	public void testIgnoreCase() {
+		List<String> test = Arrays.asList("Item 1A", "Item 1b", "Item 1C", "Item 2A", "Item 2B", "Item 2c");
+
+		List<String> expectedResult = Arrays.asList("Item 1A", "Item 1b", "Item 1C", "Item 2A", "Item 2B", "Item 2c");
+		testAndExpectIgnoreCase(test, expectedResult);
+	}
+
+	@Test
 	public void testEmptyStrings() {
 		List<String> test = Arrays.asList("00010", "0010", "010", "10", "001", "01", "1", "");
 		List<String> expectedResult = Arrays.asList("", "1", "01", "001", "10", "010", "0010", "00010");
@@ -68,6 +76,15 @@ public class NaturalSortTest {
 		long seed = System.nanoTime();
 		Collections.shuffle(test, new Random(seed));
 		Collections.sort(test, NaturalSort.naturalSortComparator);
+		for (int i = 0; i < test.size(); i++) {
+			Assert.assertEquals(expectedResult.get(i), test.get(i));
+		}
+	}
+
+	private void testAndExpectIgnoreCase(List<String> test, List<String> expectedResult) {
+		long seed = System.nanoTime();
+		Collections.shuffle(test, new Random(seed));
+		Collections.sort(test, NaturalSort.naturalSortIgnoreCaseComparator);
 		for (int i = 0; i < test.size(); i++) {
 			Assert.assertEquals(expectedResult.get(i), test.get(i));
 		}
