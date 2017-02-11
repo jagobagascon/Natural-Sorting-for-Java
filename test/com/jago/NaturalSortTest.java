@@ -69,7 +69,7 @@ public class NaturalSortTest {
 		Collections.shuffle(test, new Random(seed));
 		Collections.sort(test, NaturalSort.naturalSortComparator);
 		for (int i = 0; i < test.size(); i++) {
-			Assert.assertEquals(test.get(i), expectedResult.get(i));
+			Assert.assertEquals(expectedResult.get(i), test.get(i));
 		}
 	}
 
