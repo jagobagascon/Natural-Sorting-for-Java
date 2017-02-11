@@ -1,4 +1,4 @@
-# Natural-Sorting-for-Java
+# Natural Sorting for Java
 A simple Java class that provides natural sorting for strings.
 
 ## Usage
