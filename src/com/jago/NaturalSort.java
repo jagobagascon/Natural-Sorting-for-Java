@@ -1,4 +1,4 @@
-package com.example;
+package com.jago;
 
 import java.util.Comparator;
 
@@ -6,7 +6,7 @@ import java.util.Comparator;
  * Contains comparators and compare methods for natural string sorting
  * (https://en.wikipedia.org/wiki/Natural_sort_order)
  * 
- * @author Jagoba
+ * @author Jagoba Gasc&oacute;n
  */
 public class NaturalSort {
 
