@@ -1,4 +1,4 @@
-package com.jago;
+package com.github.jagobagascon;
 
 import java.util.Comparator;
 
