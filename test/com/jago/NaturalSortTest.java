@@ -8,8 +8,6 @@ import java.util.Random;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.jago.NaturalSort;
-
 public class NaturalSortTest {
 
 	@Test
@@ -62,6 +60,7 @@ public class NaturalSortTest {
 	public void testEqualNumbersDifferentRepresentation() {
 		List<String> test = Arrays.asList("00010", "0010", "010", "10", "001", "01", "1", "0");
 		List<String> expectedResult = Arrays.asList("0", "1", "01", "001", "10", "010", "0010", "00010");
+
 		testAndExpect(test, expectedResult);
 	}
 
