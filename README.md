@@ -1,6 +1,4 @@
 # Natural Sorting for Java
-[![Build Status](https://travis-ci.org/jagobagascon/Natural-Sorting-for-Java.svg?branch=master)](https://travis-ci.org/jagobagascon/Natural-Sorting-for-Java)
-
 A simple Java class that provides natural sorting for strings.
 
 ## Usage
