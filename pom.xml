@@ -9,6 +9,13 @@
 	<description>A simple Java class that provides natural sorting for strings.</description>
 	<url>https://github.com/jagobagascon/Natural-Sorting-for-Java</url>
 
+	<properties>
+		<!-- Compiler properties -->
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<encoding>UTF-8</encoding>
+	</properties>
+
 	<licenses>
 		<license>
 			<name>MIT License</name>
@@ -22,7 +29,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.11</version>
+			<version>4.13.1</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
