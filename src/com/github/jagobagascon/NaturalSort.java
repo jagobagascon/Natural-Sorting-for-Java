@@ -1,6 +1,5 @@
 package com.github.jagobagascon;
 
-import java.math.BigInteger;
 import java.util.Comparator;
 
 /**
@@ -56,7 +55,6 @@ public class NaturalSort {
 					}
 					currentIndex1++;
 				} // [k, i) => number
-				String number1String = aString.substring(k, currentIndex1);
 
 				int currentIndex2 = k + 1;
 				// k => digit
@@ -67,19 +65,14 @@ public class NaturalSort {
 					}
 					currentIndex2++;
 				} // [k, j) => number
-				String number2String = bString.substring(k, currentIndex2);
-
-				int maxNumberLength = Math.max(number1String.length(), number2String.length());
-				Number number1 = parseNumber(number1String, maxNumberLength);
-				Number number2 = parseNumber(number2String, maxNumberLength);
-				int numberComparisonResult = compareNumbers(number1, number2);
 
 				/*
 				 * If the numbers are different we do not care about the rest of
 				 * the string: return immediately.
 				 */
-				if (numberComparisonResult != 0) {
-					return numberComparisonResult;
+				int cmp = compareNumericStrings(k, aString, currentIndex1 - k, bString, currentIndex2 - k);
+				if (cmp != 0) {
+					return cmp;
 				} else {
 					/*
 					 * If the number representation is the same but strings have
@@ -109,21 +102,32 @@ public class NaturalSort {
 		return len1 - len2;
 	}
 
-	private static Number parseNumber(String s, int maxLength) {
-		if (maxLength < 10) {
-			return Integer.parseInt(s);
+	private static int compareNumericStrings(int from, String n1, int n1Len, String n2, int n2Len) {
+		int res = 0;
+
+		int maxLen = Math.max(n1Len, n2Len);
+
+		// Compare strings from right to left
+		for (int i = 1; i <= maxLen; i++) {
+			// asumme the char is a '0' in case the string is shorter
+			char c1 = '0';
+			char c2 = '0';
+
+			if (i <= n1Len) {
+				c1 = n1.charAt(from + n1Len - i);
+			}
+
+			if (i <= n2Len) {
+				c2 = n2.charAt(from + n2Len - i);
+			}
+
+			// only update res if they are different
+			if (c1 != c2) {
+				res = c1 - c2; // char comparison is fine as 0 < 1 < ... < 9
+			}
 		}
 
-		if (maxLength <= 19) {
-			return Long.parseLong(s);
-		}
-
-		return new BigInteger(s);
-	}
-
-	@SuppressWarnings("unchecked")
-	private static int compareNumbers(Number a, Number b) {
-		return ((Comparable<Number>) a).compareTo(b);
+		return res;
 	}
 
 }
