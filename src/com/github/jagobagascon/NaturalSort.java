@@ -29,10 +29,14 @@ public class NaturalSort {
 	};
 
 	public static int compareIgnoreCase(String aString, String bString) {
-		return compare(aString.toLowerCase(), bString.toLowerCase());
+		return compare(aString, bString, true);
 	}
 
 	public static int compare(String aString, String bString) {
+		return compare(aString, bString, false);
+	}
+
+	private static int compare(String aString, String bString, boolean ignoreCase) {
 		int len1 = aString.length();
 		int len2 = bString.length();
 		int lim = Math.min(len1, len2);
@@ -90,8 +94,15 @@ public class NaturalSort {
 					k = currentIndex1 - 1;
 				}
 
-			} else if (c1 != c2) {
-				return c1 - c2;
+			} else {
+				if (ignoreCase) {
+					c1 = Character.toLowerCase(c1);
+					c2 = Character.toLowerCase(c2);
+				}
+
+				if (c1 != c2) {
+					return c1 - c2;
+				}
 			}
 			k++;
 		}
