@@ -3,10 +3,7 @@ package com.github.jagobagascon;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class NaturalSortTest {
 
@@ -81,18 +78,17 @@ public class NaturalSortTest {
 	}
 
 	private void testAndExpect(List<String> test, List<String> expectedResult) {
-		long seed = System.nanoTime();
-		Collections.shuffle(test, new Random(seed));
-		Collections.sort(test, NaturalSort.naturalSortComparator);
-		for (int i = 0; i < test.size(); i++) {
-			Assert.assertEquals(expectedResult.get(i), test.get(i));
-		}
+		testAndExpect(test, expectedResult, NaturalSort.naturalSortComparator);
 	}
 
 	private void testAndExpectIgnoreCase(List<String> test, List<String> expectedResult) {
+		testAndExpect(test, expectedResult, NaturalSort.naturalSortIgnoreCaseComparator);
+	}
+
+	private void testAndExpect(List<String> test, List<String> expectedResult, Comparator<String> comparator) {
 		long seed = System.nanoTime();
 		Collections.shuffle(test, new Random(seed));
-		Collections.sort(test, NaturalSort.naturalSortIgnoreCaseComparator);
+		Collections.sort(test, comparator);
 		for (int i = 0; i < test.size(); i++) {
 			Assert.assertEquals(expectedResult.get(i), test.get(i));
 		}
