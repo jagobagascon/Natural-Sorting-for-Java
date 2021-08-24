@@ -1,5 +1,6 @@
 package com.github.jagobagascon;
 
+import java.math.BigInteger;
 import java.util.Comparator;
 
 /**
@@ -54,7 +55,7 @@ public class NaturalSort {
 					}
 					currentIndex1++;
 				} // [k, i) => number
-				int number1 = Integer.parseInt(aString.substring(k, currentIndex1));
+				String number1String = aString.substring(k, currentIndex1);
 
 				int currentIndex2 = k + 1;
 				// k => digit
@@ -65,14 +66,19 @@ public class NaturalSort {
 					}
 					currentIndex2++;
 				} // [k, j) => number
-				int number2 = Integer.parseInt(bString.substring(k, currentIndex2));
+				String number2String = bString.substring(k, currentIndex2);
+
+				int maxNumberLength = Math.max(number1String.length(), number2String.length());
+				Number number1 = parseNumber(number1String, maxNumberLength);
+				Number number2 = parseNumber(number2String, maxNumberLength);
+				int numberComparisonResult = compareNumbers(number1, number2);
 
 				/*
 				 * If the numbers are different we do not care about the rest of
 				 * the string: return immediately.
 				 */
-				if (number1 != number2) {
-					return number1 - number2;
+				if (numberComparisonResult != 0) {
+					return numberComparisonResult;
 				} else {
 					/*
 					 * If the number representation is the same but strings have
@@ -93,6 +99,23 @@ public class NaturalSort {
 			k++;
 		}
 		return len1 - len2;
+	}
+
+	private static Number parseNumber(String s, int maxLength) {
+		if (maxLength < 10) {
+			return Integer.parseInt(s);
+		}
+
+		if (maxLength <= 19) {
+			return Long.parseLong(s);
+		}
+
+		return new BigInteger(s);
+	}
+
+	@SuppressWarnings("unchecked")
+	private static int compareNumbers(Number a, Number b) {
+		return ((Comparable<Number>) a).compareTo(b);
 	}
 
 }
