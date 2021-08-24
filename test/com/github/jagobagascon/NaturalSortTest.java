@@ -1,14 +1,12 @@
 package com.github.jagobagascon;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-
-import org.junit.Assert;
-import org.junit.Test;
-
-import com.github.jagobagascon.NaturalSort;
 
 public class NaturalSortTest {
 
@@ -70,6 +68,14 @@ public class NaturalSortTest {
 	public void testEqualNumbersDifferentRepresentation() {
 		List<String> test = Arrays.asList("00010", "0010", "010", "10", "001", "01", "1", "0");
 		List<String> expectedResult = Arrays.asList("0", "1", "01", "001", "10", "010", "0010", "00010");
+
+		testAndExpect(test, expectedResult);
+	}
+
+	@Test
+	public void testBigNumbers() {
+		List<String> test = Arrays.asList("123456789", "1", "123456789123456789123456789", "123456789123456789");
+		List<String> expectedResult = Arrays.asList("1", "123456789", "123456789123456789", "123456789123456789123456789");
 
 		testAndExpect(test, expectedResult);
 	}
