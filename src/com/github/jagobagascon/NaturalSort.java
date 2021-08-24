@@ -13,14 +13,14 @@ public class NaturalSort {
 	private NaturalSort() {
 	}
 
-	public static Comparator<String> naturalSortComparator = new Comparator<String>() {
+	public static final Comparator<String> naturalSortComparator = new Comparator<String>() {
 
 		public int compare(String o1, String o2) {
 			return NaturalSort.compare(o1, o2);
 		}
 	};
 
-	public static Comparator<String> naturalSortIgnoreCaseComparator = new Comparator<String>() {
+	public static final Comparator<String> naturalSortIgnoreCaseComparator = new Comparator<String>() {
 
 		public int compare(String o1, String o2) {
 			return NaturalSort.compareIgnoreCase(o1, o2);
