@@ -3,9 +3,8 @@ package com.github.jagobagascon;
 import java.util.Comparator;
 
 /**
- * Contains comparators and compare methods for natural string sorting
- * (https://en.wikipedia.org/wiki/Natural_sort_order)
- * 
+ * Contains comparators and comparison methods for
+ * <a href="https://en.wikipedia.org/wiki/Natural_sort_order">natural string sorting</a>.
  * @author Jagoba Gasc&oacute;n
  */
 public class NaturalSort {
