@@ -16,7 +16,7 @@ Step 2 Add the dependency
 <dependency>
     <groupId>com.github.jagobagascon</groupId>
     <artifactId>Natural-Sorting-for-Java</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 Step 3 Use the provided comparators to sort your lists
