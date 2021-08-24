@@ -33,23 +33,20 @@ public class NaturalSort {
 	}
 
 	public static int compare(String aString, String bString) {
-
-		char[] v1 = aString.toCharArray();
-		char[] v2 = bString.toCharArray();
-		int len1 = v1.length;
-		int len2 = v2.length;
+		int len1 = aString.length();
+		int len2 = bString.length();
 		int lim = Math.min(len1, len2);
 
 		int k = 0;
 		while (k < lim) {
-			char c1 = v1[k];
-			char c2 = v2[k];
+			char c1 = aString.charAt(k);
+			char c2 = bString.charAt(k);
 
 			if (Character.isDigit(c1) && Character.isDigit(c2)) {
 				int currentIndex1 = k + 1;
 				// k => digit
 				while (currentIndex1 < len1) {
-					c1 = v1[currentIndex1];
+					c1 = aString.charAt(currentIndex1);
 					if (!Character.isDigit(c1)) {
 						break;
 					}
@@ -60,7 +57,7 @@ public class NaturalSort {
 				int currentIndex2 = k + 1;
 				// k => digit
 				while (currentIndex2 < len2) {
-					c2 = v2[currentIndex2];
+					c2 = bString.charAt(currentIndex2);
 					if (!Character.isDigit(c2)) {
 						break;
 					}
