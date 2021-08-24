@@ -109,7 +109,7 @@ public class NaturalSort {
 
 		// Compare strings from right to left
 		for (int i = 1; i <= maxLen; i++) {
-			// asumme the char is a '0' in case the string is shorter
+			// Assume the char is a '0' in case the string is shorter
 			char c1 = '0';
 			char c2 = '0';
 
@@ -121,9 +121,9 @@ public class NaturalSort {
 				c2 = n2.charAt(from + n2Len - i);
 			}
 
-			// only update res if they are different
+			// Only update res if they are different
 			if (c1 != c2) {
-				res = c1 - c2; // char comparison is fine as 0 < 1 < ... < 9
+				res = c1 - c2; // Char comparison is fine as 0 < 1 < ... < 9
 			}
 		}
 
