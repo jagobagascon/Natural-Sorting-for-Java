@@ -10,8 +10,8 @@ public class NaturalSortTest {
 	@Test
 	public void testStrings() {
 		List<String> test = Arrays.asList("f", "b", "c", "d", "e", "a");
-
 		List<String> expectedResult = Arrays.asList("a", "b", "c", "d", "e", "f");
+
 		testAndExpect(test, expectedResult);
 	}
 
@@ -19,25 +19,25 @@ public class NaturalSortTest {
 	public void testList() {
 		List<String> test = Arrays.asList("Item no. 1", "Item no. 2", "Item no. 3", "Item no. 4", "Item no. 4",
 				"Item no. 6", "Item no. 7");
-
 		List<String> expectedResult = Arrays.asList("Item no. 1", "Item no. 2", "Item no. 3", "Item no. 4",
 				"Item no. 4", "Item no. 6", "Item no. 7");
+
 		testAndExpect(test, expectedResult);
 	}
 
 	@Test
 	public void testSameNumberDifferentAfterIt() {
 		List<String> test = Arrays.asList("Item 1A", "Item 1B", "Item 1C", "Item 2A", "Item 2B", "Item 2C");
-
 		List<String> expectedResult = Arrays.asList("Item 1A", "Item 1B", "Item 1C", "Item 2A", "Item 2B", "Item 2C");
+
 		testAndExpect(test, expectedResult);
 	}
 
 	@Test
 	public void testIgnoreCase() {
 		List<String> test = Arrays.asList("Item 1A", "Item 1b", "Item 1C", "Item 2A", "Item 2B", "Item 2c");
-
 		List<String> expectedResult = Arrays.asList("Item 1A", "Item 1b", "Item 1C", "Item 2A", "Item 2B", "Item 2c");
+
 		testAndExpectIgnoreCase(test, expectedResult);
 	}
 
@@ -45,6 +45,7 @@ public class NaturalSortTest {
 	public void testEmptyStrings() {
 		List<String> test = Arrays.asList("00010", "0010", "010", "10", "001", "01", "1", "");
 		List<String> expectedResult = Arrays.asList("", "1", "01", "001", "10", "010", "0010", "00010");
+
 		testAndExpect(test, expectedResult);
 	}
 
@@ -54,6 +55,7 @@ public class NaturalSortTest {
 				"Item no. 11", "Item no. 010");
 		List<String> expectedResult = Arrays.asList("Item no. 1", "Item no. 01", "Item no. 2", "Item no. 3",
 				"Item no. 10", "Item no. 010", "Item no. 11");
+
 		testAndExpect(test, expectedResult);
 	}
 
