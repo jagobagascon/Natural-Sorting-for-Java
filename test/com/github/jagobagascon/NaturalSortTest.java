@@ -1,5 +1,6 @@
 package com.github.jagobagascon;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.*;
@@ -53,6 +54,22 @@ public class NaturalSortTest {
 				"1", "123456789", "123456789123456789", "123456789123456789123456789"));
 	}
 
+	@Test
+	public void testGeorgianAlphabetCaseInsensitive() {
+		// Characters and explanation taken from https://stackoverflow.com/a/25513639
+		String smallLatinI = "i";
+		String smallDotlessI = "ı";
+		String capitalDottedI = "İ";
+		// Both characters have same uppercase counterpart, so they are equal in case-insensitive comparison
+		Assert.assertEquals(0, NaturalSort.naturalSortIgnoreCaseComparator.compare(smallDotlessI, smallLatinI));
+		// When converted to uppercase and then to lowercase, both characters give "I", so they are equal in case-insensitive comparison
+		Assert.assertEquals(0, NaturalSort.naturalSortIgnoreCaseComparator.compare(capitalDottedI, smallDotlessI));
+
+		// Check that case ignoring logic does not break regular comparisons.
+		Assert.assertEquals(sign(smallDotlessI.compareTo(smallLatinI)), sign(NaturalSort.naturalSortComparator.compare(smallDotlessI, smallLatinI)));
+		Assert.assertEquals(sign(capitalDottedI.compareTo(smallDotlessI)), sign(NaturalSort.naturalSortComparator.compare(capitalDottedI, smallDotlessI)));
+	}
+
 	private void testSort(List<String> expectedResult) {
 		testSort(expectedResult, NaturalSort.naturalSortComparator);
 	}
@@ -93,6 +110,10 @@ public class NaturalSortTest {
 				}
 			}
 		}
+	}
+
+	private static int sign(int x) {
+		return Integer.compare(x, 0);
 	}
 
 }
