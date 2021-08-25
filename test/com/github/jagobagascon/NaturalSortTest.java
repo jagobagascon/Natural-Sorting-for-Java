@@ -88,11 +88,25 @@ public class NaturalSortTest {
 	}
 
 	private void testAndExpect(List<String> test, List<String> expectedResult, Comparator<String> comparator) {
-		long seed = System.nanoTime();
-		Collections.shuffle(test, new Random(seed));
-		Collections.sort(test, comparator);
-		for (int i = 0; i < test.size(); i++) {
-			Assert.assertEquals(expectedResult.get(i), test.get(i));
+		// Calculate seed depending only on test data to make tests deterministic and failures reproducible
+		long seed = 0;
+
+		// Avoid using List.hashCode here, not sure if it changes
+		// between Java versions; String.hashCode definitely does not change
+		for (String element : expectedResult) {
+			seed += 31L * element.hashCode();
+		}
+
+		Random random = new Random(seed);
+
+		int runCount = 64;
+
+		for (int run = 0; run < runCount; run++) {
+			Collections.shuffle(test, random);
+			Collections.sort(test, comparator);
+			for (int i = 0; i < test.size(); i++) {
+				Assert.assertEquals(expectedResult.get(i), test.get(i));
+			}
 		}
 	}
 
