@@ -3,9 +3,8 @@ package com.github.jagobagascon;
 import java.util.Comparator;
 
 /**
- * Contains comparators and compare methods for natural string sorting
- * (https://en.wikipedia.org/wiki/Natural_sort_order)
- * 
+ * Contains comparators and comparison methods for
+ * <a href="https://en.wikipedia.org/wiki/Natural_sort_order">natural string sorting</a>.
  * @author Jagoba Gasc&oacute;n
  */
 public class NaturalSort {
@@ -88,13 +87,23 @@ public class NaturalSort {
 				}
 
 			} else {
-				if (ignoreCase) {
-					c1 = Character.toLowerCase(c1);
-					c2 = Character.toLowerCase(c2);
-				}
-
 				if (c1 != c2) {
-					return c1 - c2;
+					if (ignoreCase) {
+						// Behavior like in java.lang.String.CaseInsensitiveComparator
+						c1 = Character.toUpperCase(c1);
+						c2 = Character.toUpperCase(c2);
+
+						if (c1 != c2) {
+							c1 = Character.toLowerCase(c1);
+							c2 = Character.toLowerCase(c2);
+
+							if (c1 != c2) {
+								return c1 - c2;
+							}
+						}
+					} else {
+						return c1 - c2;
+					}
 				}
 			}
 			k++;
@@ -109,7 +118,7 @@ public class NaturalSort {
 
 		// Compare strings from right to left
 		for (int i = 1; i <= maxLen; i++) {
-			// asumme the char is a '0' in case the string is shorter
+			// Assume the char is a '0' in case the string is shorter
 			char c1 = '0';
 			char c2 = '0';
 
@@ -121,9 +130,9 @@ public class NaturalSort {
 				c2 = n2.charAt(from + n2Len - i);
 			}
 
-			// only update res if they are different
+			// Only update res if they are different
 			if (c1 != c2) {
-				res = c1 - c2; // char comparison is fine as 0 < 1 < ... < 9
+				res = c1 - c2; // Char comparison is fine as 0 < 1 < ... < 9
 			}
 		}
 
