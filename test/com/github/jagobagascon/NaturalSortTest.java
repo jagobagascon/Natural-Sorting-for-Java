@@ -1,6 +1,5 @@
 package com.github.jagobagascon;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.*;
@@ -105,7 +104,16 @@ public class NaturalSortTest {
 			Collections.shuffle(test, random);
 			Collections.sort(test, comparator);
 			for (int i = 0; i < test.size(); i++) {
-				Assert.assertEquals(expectedResult.get(i), test.get(i));
+				String actual = test.get(i);
+				String expected = expectedResult.get(i);
+				if (!actual.equals(expected)) {
+					String message = "Lists differ at index " + i + "\n" +
+							"Actual element:   " + actual + "\n" +
+							"Expected element: " + expected + "\n" +
+							"Actual list:      " + test + "\n" +
+							"Expected list:    " + expectedResult;
+					throw new AssertionError(message);
+				}
 			}
 		}
 	}
