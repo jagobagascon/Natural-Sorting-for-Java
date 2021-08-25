@@ -87,13 +87,23 @@ public class NaturalSort {
 				}
 
 			} else {
-				if (ignoreCase) {
-					c1 = Character.toLowerCase(c1);
-					c2 = Character.toLowerCase(c2);
-				}
-
 				if (c1 != c2) {
-					return c1 - c2;
+					if (ignoreCase) {
+						// Behavior like in java.lang.String.CaseInsensitiveComparator
+						c1 = Character.toUpperCase(c1);
+						c2 = Character.toUpperCase(c2);
+
+						if (c1 != c2) {
+							c1 = Character.toLowerCase(c1);
+							c2 = Character.toLowerCase(c2);
+
+							if (c1 != c2) {
+								return c1 - c2;
+							}
+						}
+					} else {
+						return c1 - c2;
+					}
 				}
 			}
 			k++;
