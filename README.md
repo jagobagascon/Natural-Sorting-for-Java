@@ -6,8 +6,11 @@ Step 1 Add the JitPack repository to your build file
 ```xml
 <repositories>
 	<repository>
-	    <id>jitpack.io</id>
-	    <url>https://jitpack.io</url>
+		<id>github</id>
+		<url>https://maven.pkg.github.com/jagobagascon</url>
+		<snapshots>
+			<enabled>true</enabled>
+		</snapshots>
 	</repository>
 </repositories>
 ```
@@ -16,7 +19,7 @@ Step 2 Add the dependency
 <dependency>
     <groupId>com.github.jagobagascon</groupId>
     <artifactId>Natural-Sorting-for-Java</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
 </dependency>
 ```
 Step 3 Use the provided comparators to sort your lists
