@@ -31,3 +31,7 @@ public void sortNaturalIgnoreCase(List<String> myList) {
 	myList.sort(NaturalSort.naturalSortIgnoreCaseComparator);
 }
 ```
+
+## Notes
+
+The library recognizes non-ASCII decimal digits when comparing numbers (for example, Thai digits or full-width digits). Numbers consisting of mixed digit sets or languages are compared as a whole. See [this discussion](https://github.com/jagobagascon/Natural-Sorting-for-Java/issues/9) for more info.

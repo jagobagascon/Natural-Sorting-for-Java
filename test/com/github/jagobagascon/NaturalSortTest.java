@@ -70,6 +70,16 @@ public class NaturalSortTest {
 		Assert.assertEquals(sign(capitalDottedI.compareTo(smallDotlessI)), sign(NaturalSort.naturalSortComparator.compare(capitalDottedI, smallDotlessI)));
 	}
 
+	@Test
+	public void testNonAsciiDigits() {
+		String fullWidthDigitOne = "１";
+		String fullWidthDigitFive = "５";
+		String fullWidthDigitSix = "６";
+
+		testSort(Arrays.asList(fullWidthDigitOne, "2", fullWidthDigitFive, "9",
+				fullWidthDigitOne + fullWidthDigitFive, "1" + fullWidthDigitSix, fullWidthDigitOne + "7"));
+	}
+
 	private void testSort(List<String> expectedResult) {
 		testSort(expectedResult, NaturalSort.naturalSortComparator);
 	}

@@ -118,21 +118,21 @@ public class NaturalSort {
 
 		// Compare strings from right to left
 		for (int i = 1; i <= maxLen; i++) {
-			// Assume the char is a '0' in case the string is shorter
-			char c1 = '0';
-			char c2 = '0';
+			// Assume the digit is a 0 in case the string is shorter
+			int d1 = 0;
+			int d2 = 0;
 
 			if (i <= n1Len) {
-				c1 = n1.charAt(from + n1Len - i);
+				d1 = Character.digit(n1.charAt(from + n1Len - i), 10);
 			}
 
 			if (i <= n2Len) {
-				c2 = n2.charAt(from + n2Len - i);
+				d2 = Character.digit(n2.charAt(from + n2Len - i), 10);
 			}
 
 			// Only update res if they are different
-			if (c1 != c2) {
-				res = c1 - c2; // Char comparison is fine as 0 < 1 < ... < 9
+			if (d1 != d2) {
+				res = d1 - d2;
 			}
 		}
 
