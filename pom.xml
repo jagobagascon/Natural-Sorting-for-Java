@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.jagobagascon</groupId>
 	<artifactId>natural-sort</artifactId>
-	<version>1.1.0</version>
+	<version>1.2.0</version>
 
 	<name>Natural Sorting for Java</name>
 	<description>A simple Java class that provides natural sorting for strings.</description>
