@@ -2,7 +2,7 @@
 A simple Java class that provides natural sorting for strings.
 
 ## Usage
-Step 1 Add the JitPack repository to your build file
+Step 1 Add the GitHub Maven repository to your build file
 ```xml
 <repositories>
 	<repository>
